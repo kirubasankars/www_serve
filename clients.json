@@ -1,0 +1,14 @@
+{
+	"1234567890" : {
+		"secret" : "0987654321",
+		"namespaces" : ["."]
+	},
+	"12345678901" : {
+		"secret" : "09876543211",
+		"namespaces" : ["./kiruba"]
+	},
+	"admin" : {
+		"secret" : "admin",
+		"namespaces" : ["./kiruba", "."]
+	}
+}

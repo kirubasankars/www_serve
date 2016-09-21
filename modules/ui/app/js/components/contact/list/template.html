@@ -1,0 +1,16 @@
+<div class="row list-header">
+  <div class="col-md-12">Name</div>
+</div>
+<div class="row list-items">
+  <!-- ko foreach : model.rows -->
+  <div class="list-item col-md-12">
+    <div data-bind="visible: !is_company">
+      <span data-bind="text: first_name"></span>,
+      <span data-bind="text: last_name"></span>
+    </div>
+    <div data-bind="visible: is_company">
+      <span data-bind="text: company_name"></span>
+    </div>
+  </div>
+  <!-- /ko -->
+</div>

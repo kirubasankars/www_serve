@@ -1,0 +1,11 @@
+{	
+	"modules" : [
+		"home"
+	],	
+	"roles" : {
+		"admin" : [
+			"url(^ALL:module.*$)",
+			"admin"
+		]
+	}
+}

@@ -1,0 +1,9 @@
+{		
+	"properties" : {
+		"username" : {					
+			"type": "string",
+			"pattern" : "^\\w+$"			
+		}
+	},
+	"required" : ["username"]
+}

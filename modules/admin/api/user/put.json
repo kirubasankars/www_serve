@@ -1,0 +1,28 @@
+{
+	"_partition_by" : "id",
+	"_array" : true,
+	"id" : "id",
+	"first_name" : "first_name",
+	"last_name"  : "last_name",
+	"_validate" : {
+		required : ["first_name1"]	
+	},
+	"groups" : {
+		"_partition_by" : "group_id",
+		"_array" : true,
+		"id" : "group_id",
+		"name" : "group_name",
+		"_validate" : {
+			required : ["group_name"]	
+		}
+	},
+	"tokens" : {
+		"_partition_by" : "token_id",
+		"_array" : true,
+		"id" : "token_id",
+		"name" : "token_name",
+		"_validate" : {
+			required : ["token_name"]	
+		}
+	}
+}

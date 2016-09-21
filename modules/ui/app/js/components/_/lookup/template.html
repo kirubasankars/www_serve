@@ -1,0 +1,16 @@
+<div class="shadow" data-bind="click: close"></div>
+<div class="content">
+  <div class="row lookup-control">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <select class="form-control" data-bind="options: availableFields,
+                                                  optionsText: 'description',
+                                                  value: selectedField"></select>
+      </div>
+      <div class="col-md-6">
+        <input class="form-control keyword" type="text" data-bind="{ value: keyword, event : { keydown: select, keyup : search } , valueUpdate : 'afterkeydown' }" />
+      </div>
+    </div>
+  </div>
+  <div style="margin:10px;" data-bind="template : { name : type + '-template', afterRender : afterRender }"></div>
+</div>

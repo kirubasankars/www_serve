@@ -1,0 +1,7 @@
+{
+	"permissions" : {
+		"admin" : [
+			"url(GET:module.path.to.file)"
+		]
+	}
+}

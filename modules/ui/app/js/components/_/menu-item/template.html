@@ -1,0 +1,14 @@
+<div data-bind="foreach: data.childs">
+  <div>
+    <div class="menu-item" data-bind="css: ($data.childs && $data.childs.length >= 0 ? 'has-child child-closed' : '')">
+      <!-- ko foreach : $parent.emptyBoxes -->
+      <span class="emptyBox"></span>
+      <!-- /ko -->
+      <i class="fa fa-caret-right"></i>
+      <i class="fa fa-caret-down"></i>
+      <a class="title" data-bind="text: title, attr : { dhref : $data.href ? href : '' }"></a>
+    </div>
+    <!-- ko component : { name : "_$menu-item", params : { data : $data, level : ($parent.level + 1) } } -->
+    <!-- /ko -->
+  </div>
+</div>

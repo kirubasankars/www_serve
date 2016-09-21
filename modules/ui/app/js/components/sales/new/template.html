@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6">
+      <div data-bind="component : { name : '_$lookup-text',
+                                    params : {
+                                      type : 'contact',
+                                      text : 'name',
+                                      key : model.customer_id
+                                    }
+                                  }">
+      </div>
+    </div>
+</div>
+<input type="text" name="name" data-bind="value: model.order_date">
+
+<div data-bind="foreach: model.lines()">
+  <div class="row">
+    <div class="col-md-2">
+      <div data-bind="component : { name : '_$lookup-text',
+                                    params : {
+                                      type : 'product',
+                                      text : 'name',
+                                      key : product_id
+                                    }
+                                  }">
+      </div>
+    </div>
+    <div class="col-md-2">
+      <input class="form-control" type="text" data-bind="value: qty, event : { keyup : $parent.addLine }" />
+    </div>
+  </div>
+</div>

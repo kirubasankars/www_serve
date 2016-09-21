@@ -1,0 +1,6 @@
+{
+	"access_token" : "token",
+	"_validate" : {
+		"required" : ["grant_type", "client_id", "client_secret", "username", "password"]
+	}
+}

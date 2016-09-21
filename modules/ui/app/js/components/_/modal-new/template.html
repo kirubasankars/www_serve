@@ -1,0 +1,13 @@
+<div class="header">
+  <div class="left">
+    <button data-bind="click: save">Save</button>
+  </div>
+  <div class="right">
+    <i class="fa fa-close" data-bind="click: close"></i>
+  </div>
+</div>
+<div class="newpage page">
+  <div class="content">
+    <div class="new" data-bind="{ component : { name : template(), params : { config : config, model : config.data() } }}"></div>
+  </div>
+</div>

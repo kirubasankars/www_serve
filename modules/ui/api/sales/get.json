@@ -1,0 +1,14 @@
+﻿{
+    "_partition_by": "id",
+    "_type": "array",
+    "id" :  "@id",
+    "order_date": "@orderdate",
+    "customer_id" : "@customerid",
+    "lines": {
+        "_partition_by": "lineid",
+        "_type": "array",
+		"line_id" : "@lineid",
+        "product_id" : "@productid",
+        "qty" : "@qty"
+    }
+}

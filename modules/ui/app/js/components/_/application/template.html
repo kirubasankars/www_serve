@@ -1,0 +1,5 @@
+<div class="outlets">
+  <!-- ko foreach: outlets -->
+  <div data-bind="{ component : { name : '_$' + name + '-outlet', params : { config : $data } }, css : name + '-outlet' }" class="outlet"></div>
+  <!-- /ko -->
+</div>

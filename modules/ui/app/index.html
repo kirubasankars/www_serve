@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="page">
+    <div class="application" data-bind="{ component : { name : '_$application', params : { outlets : outlets } } }"></div>
+  </div>
+  <script type="text/html" id="contact-template">
+    <div class="lookup-header">
+      <table class="table">
+        <tr>
+          <th>First Name</th>
+        </tr>
+      </table>
+    </div>
+    <div class="lookup-rows">
+      <table class="table">
+        <tbody data-bind="foreach: rows()">
+          <tr>
+            <td>
+              <div data-bind="visible: !is_company">
+                <span data-bind="text: first_name"></span>,
+                <span data-bind="text: last_name"></span>
+              </div>
+              <div data-bind="visible: is_company">
+                <span data-bind="text: company_name"></span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+
+  <script type="text/html" id="product-template">
+    <div class="lookup-header">
+      <table class="table">
+        <tr>
+          <th>Name</th>
+        </tr>
+      </table>
+    </div>
+    <div class="lookup-rows">
+      <table class="table">
+        <tbody data-bind="foreach: rows()">
+          <tr>
+            <td>
+              <span data-bind="text: name"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+
+  <script src="libs/require.js" data-main="js/setup" charset="utf-8"></script>
+</body>
+
+</html>

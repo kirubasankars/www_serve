@@ -1,0 +1,19 @@
+<div class="listpage page">
+    <div class="header">
+        <div class="top"></div>
+        <div class="toolbar">
+            <button class="new" data-bind="click: add">New</button>
+            <button class="edit" data-bind="click: edit">Edit</button>
+            <button class="remove" data-bind="click: remove">Delete</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="leftnav">
+            <div class="menu" data-bind="{ component : { name : '_$menu-item', params : { data : menu, level : 2 }} }"></div>
+        </div>
+        <div class="list" data-bind="{ component : { name : config.type() + '$list', params : { config : config, model : config.data() } } }">
+        </div>
+        <div class="qview" data-bind="{ component : { name : config.type() + '$qview', params : { config : config, model : config.selectedRow() } }}">
+        </div>
+    </div>
+</div>

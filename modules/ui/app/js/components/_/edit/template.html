@@ -1,0 +1,11 @@
+<div class="editpage page">
+  <div class="header">
+    <div class="toolbar">
+      <button type="button" data-bind="click: save">Save</button>
+    </div>
+  </div>
+  <div class="content">      
+      <div class="edit" data-bind="{ component : { name : template(), params : { config : config, model : config.data() } }}">
+      </div>
+  </div>
+</div>

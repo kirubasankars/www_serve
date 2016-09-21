@@ -1,0 +1,5 @@
+{
+	"database" : {
+		"connection-string" : "server=localhost;database=users;user=postgres;password=dev@123"
+	}
+}

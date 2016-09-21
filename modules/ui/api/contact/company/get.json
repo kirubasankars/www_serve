@@ -1,0 +1,26 @@
+﻿{
+    "_partition_by": "id",
+    "_type": "array",
+    "id" :  "@id",    
+    "is_company": "@iscompany",
+    "company_name": "@companyname",
+    "parent_company_id": "@parentcompanyid",
+    "is_customer": "@iscustomer",
+    "is_vendor": "@isvendor",
+    "address": {        
+		"address_id" : "@addressid",
+        "is_primary" :  "@isprimaryaddress",
+        "address_line1": "@addressline1",
+        "address_line2": "@addressline2",
+        "city": "@city",
+        "state": "@state",
+        "zipcode": "@zipcode"
+    },
+    "phone_numbers": { 
+        "_partition_by": "phoneid",
+        "_type": "array",
+        "phone_id": "@phoneid",
+        "phone_number": "@phonenumber",
+        "phone_type" :  "@phonetype"
+    }
+}

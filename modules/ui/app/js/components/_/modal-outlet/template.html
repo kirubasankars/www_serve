@@ -1,0 +1,8 @@
+<div class="oulet-content" data-bind="if: config.show()">
+    <div class="modal-container">
+        <div class="shadow"></div>
+        <div class="model">
+            <div class="content" data-bind="{ component : { name : '_$modal-' + config.view(), params : { config : config } } }"></div>
+        </div>
+    </div>
+</div>
