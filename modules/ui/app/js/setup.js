@@ -8,7 +8,7 @@ require.config({
     'bootstrap': '../libs/bootstrap.min',
     'highlight': '../libs/highlight.min',
     'text': '../libs/text',
-    'domReady': '../libs/domready',
+    'domReady': '../libs/domReady',
     'sammy': '../libs/sammy'
   },
   map: {
@@ -38,44 +38,6 @@ define(['jquery', 'knockout', 'application', 'sammy', 'setting', 'domReady!'],
       idField: ''
     };
 
-    routeConfig.view.subscribe(function(newView) {
-      var type = routeConfig.type,
-        id = routeConfig.idField;
-
-      if (newView === "new" || newView === "list") {
-        if (Setting[type].ui === "NW" && newView !== "list") {
-          window.open('#/' + type + '/' + newView);
-        }
-        if (Setting[type].ui === "SW") {
-          window.location.href = '#/' + type + '/' + newView;
-        }
-        if (newView === "new" && Setting[type].ui === "PW") {
-          config.outlets[1].type(type);
-          config.outlets[1].view(newView);
-          config.outlets[1].show(true);
-        }
-      }
-
-      if (newView === "edit" || newView === "view") {
-        if (Setting[type].ui === "NW") {
-          window.open('#/' + type + '/' + id + '/' + newView);
-        }
-        if (Setting[type].ui === "SW") {
-          window.location.href = '#/' + type + '/' + id + '/' + newView;
-        }
-        if (Setting[type].ui === "PW") {
-          config.outlets[1].idField(id);
-          config.outlets[1].type(type);
-          config.outlets[1].view(newView);
-          config.outlets[1].show(true);
-        }
-      }
-    });
-
-    routeConfig.view.extend({
-      notify: 'always'
-    });
-
     var config = {
       outlets: [{
         name: 'main',
@@ -95,35 +57,77 @@ define(['jquery', 'knockout', 'application', 'sammy', 'setting', 'domReady!'],
       }]
     };
 
+    var mainOutlet = config.outlets[0],
+        modalOutlet = config.outlets[1],
+        lookupOutlet = config.outlets[2];
+
+    routeConfig.view.subscribe(function(newView) {
+      var type = routeConfig.type,
+        id = routeConfig.idField;
+
+      if (newView === "new" || newView === "list") {
+        if (Setting[type].ui === "NW" && newView !== "list") {
+          window.open('#/' + type + '/' + newView);
+        }
+        if (Setting[type].ui === "SW") {
+          window.location.href = '#/' + type + '/' + newView;
+        }
+        if (newView === "new" && Setting[type].ui === "PW") {
+          modalOutlet.type(type);
+          modalOutlet.view(newView);
+          modalOutlet.show(true);
+        }
+      }
+
+      if (newView === "edit" || newView === "view") {
+        if (Setting[type].ui === "NW") {
+          window.open('#/' + type + '/' + id + '/' + newView);
+        }
+        if (Setting[type].ui === "SW") {
+          window.location.href = '#/' + type + '/' + id + '/' + newView;
+        }
+        if (Setting[type].ui === "PW") {
+          modalOutlet.idField(id);
+          modalOutlet.type(type);
+          modalOutlet.view(newView);
+          modalOutlet.show(true);
+        }
+      }
+    });
+
+    routeConfig.view.extend({
+      notify: 'always'
+    });
+
     $(document).on("show:lookup", {}, function(event, type, key, value) {
-      config.outlets[2].show(true);
-      config.outlets[2].type(type);
-      config.outlets[2].key = key;
-      config.outlets[2].value = value;
+      lookupOutlet.show(true);
+      lookupOutlet.type(type);
+      lookupOutlet.key = key;
+      lookupOutlet.value = value;
     });
 
     $(document).on("hide:lookup", {}, function(event) {
-      config.outlets[2].show(false);
+      lookupOutlet.show(false);
     });
 
     Sammy(function() {
       this.get('#/:type/list', function() {
-        config.outlets[0].type(this.params["type"]);
-        config.outlets[0].view("list");
+        mainOutlet.type(this.params["type"]);
+        mainOutlet.view("list");
       });
       this.get('#/:type/new', function() {
-        config.outlets[0].type(this.params["type"]);
-        config.outlets[0].view("new");
+        mainOutlet.type(this.params["type"]);
+        mainOutlet.view("new");
       });
       this.get('#/:type/:id/edit', function() {
-        config.outlets[0].idField(this.params["id"]);
-        config.outlets[0].type(this.params["type"]);
-        config.outlets[0].view("edit");
+        mainOutlet.idField(this.params["id"]);
+        mainOutlet.type(this.params["type"]);
+        mainOutlet.view("edit");
       });
       this.get('#/:type/:id/view', function() {
-        config.outlets[0].idField(this.params["id"]);
-        config.outlets[0].type(this.params["type"]);
-        config.outlets[0].view("view");
+        mainOutlet.idField(this.params["id"]);
+        mainOutlet.type(this.params["type"]);
+        mainOutlet.view("view");
       });
     }).run();
 
